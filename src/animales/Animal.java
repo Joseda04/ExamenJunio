@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Inicializa un objeto Animal recién creado a partir
+ *de un código identificativo, su fecha de nacimiento, su sexo y su peso.
  */
 package animales;
 
@@ -10,12 +9,33 @@ import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
 public abstract class Animal {
+  
+    
+    protected String codigo; // Código del animal
+    private LocalDate fechaNacimiento; // Fecha de nacimiento del animal
+    private char sexo; // Sexo del animal ('M' para macho, 'H' para hembra)
+    private double peso; // Peso del animal en kilogramos
 
-    protected String codigo;
-    private LocalDate fechaNacimiento;
-    private char sexo;
-    private double peso;
-
+    /**
+     * Constructor de la clase Animal.
+     *
+     * @param codigo            Código identificativo del animal. Tiene que ser una cadena formada
+     *                          por exactamente cinco caracteres alfanuméricos entre el '0' y el '9'
+     *                          o la 'a' y la 'z' en minúsculas.
+     * @param fechaNacimiento   Cadena conteniendo la fecha que se quiere asignar al animal como fecha
+     *                          de nacimiento. La cadena deberá de seguir el siguiente formato:
+     *                          - Un número de dos cifras que represente el día del mes. Si el 
+     *                          día solo tiene una cifra, deberá ponerse un 0 delante. Ejemplo:
+     *                          01 - Un guión (-) o una barra (/) para separar el día del mes. -
+     *                          Un número de dos cifras que represente el mes del año, entre 1 y 12. 
+     *                          Si el número del mes solo tiene una cifra, deberá ponerse un 0 delante. 
+     *                          Ejemplo: 02 para febrero - Un guión (-) o una barra (/) para separar el 
+     *                          mes del año. - Un número para representar el año
+     * @param sexo            Sexo del animal. Será un caracter 'M' para los animales machos o 'H' para los animales hembra.
+     * @param peso            Peso del animal en kilogramos expresado con decimales. Tiene que ser un número positivo mayor que cero.
+     * @throws IllegalArgumentException Si alguno de los argumentos no cumple con las condiciones 
+     *                          establecidas para ser considerados correctos
+     */
     public Animal(String codigo, String fechaNacimiento, char sexo, double peso) {
 
         LocalDate fecha;
